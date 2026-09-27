@@ -1,0 +1,15 @@
+services:
+  python:
+    container_name: python-innopolis-test
+    restart: unless-stopped
+    build: .
+    image: innopolis-python:local
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/.venv
+      - /app/build
+    command: python -m http.server 8000
+#    command: python src/init.py
